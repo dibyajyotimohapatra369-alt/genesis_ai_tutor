@@ -186,7 +186,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   Future<void> executeGeminiApiCall(String command, {String systemInstruction = ""}) async {
     setState(() => networkBusy = true);
-    const String apiKey = "YOUR_GOOGLE_AI_STUDIO_GEMINI_KEY"; 
+    const String apiKey = "AQ.Ab8RN6LCOFBiPVKsWvjtmAQ-ZSMh-2mBI9sTIej7a0T_7RBCNw"; 
     const String endpoint = "https://googleapis.com";
 
     try {
