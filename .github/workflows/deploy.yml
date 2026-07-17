@@ -27,15 +27,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install Dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Build Application
+      - name: Build Application Layout
         run: npm run build || vite build
         env:
-          VITE_GEMINI_API_KEY: "AQ.Ab8RN6KpoBGxlvjNhO8mDj3Nqb0Q5G0npE5Z077aCgEpBi7mhw"
+          VITE_GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
