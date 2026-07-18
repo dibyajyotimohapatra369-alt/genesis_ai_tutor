@@ -5,7 +5,7 @@ const PLANS = [
   { id: 'elite_companion', name: 'Elite AI Companion', price: '₹999/mo', color: '#b7094c', features: ['Everything in Premium', 'SHA-256 Signature Isolation', 'Custom Voice/Anime Portrait Modules'] }
 ];
 
-export default function PremiumApp() {
+export default function App() {
   const [userTier, setUserTier] = useState<'free_sandbox' | 'premium_boards'>('free_sandbox');
   const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
 
