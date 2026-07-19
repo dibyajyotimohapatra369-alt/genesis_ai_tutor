@@ -39,7 +39,7 @@ export default function App() {
     try {
       // Connect directly over the open internet to Google's official Gemini cloud server satellites
           const apiKey = "AQ.Ab8RN6KpoBGxlvjNhO8mDj3Nqb0Q5G0npE5Z077aCgEpBi7mhw";
-    const response = await fetch(
+        const response = await fetch(
       `https://googleapis.com{apiKey}`,
         {
           method: 'POST',
