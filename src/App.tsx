@@ -18,7 +18,7 @@ const TEACHERS = [
     style: 'BLACK BLAZER & GLASSES',
     prompt: 'You are Miss Rosie, a highly dedicated, empathetic, and organized Biology faculty mentor. Explain life sciences with structured warmth and motivating insights.'
   }
- regel;
+];
 
 export default function App() {
   const [selectedTeacher, setSelectedTeacher] = useState(TEACHERS[0]);
