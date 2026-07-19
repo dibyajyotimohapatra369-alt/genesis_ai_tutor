@@ -37,26 +37,43 @@ export default function App() {
     setIsLoading(true);
 
     try {
-      // Connect directly over the open internet to Google's official Gemini cloud server satellites
-          const apiKey = "AQ.Ab8RN6KpoBGxlvjNhO8mDj3Nqb0Q5G0npE5Z077aCgEpBi7mhw";
-        const response = await fetch(
-      `https://googleapis.com{apiKey}`,
+      const apiKey = "AQ.Ab8RN6KpoBGxlvjNhO8mDj3Nqb0Q5G0npE5Z077aCgEpBi7mhw";
+      const response = await fetch(
+        `https://googleapis.com{apiKey}`,
         {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify({
-            contents: [{
-              parts: [{ text: `${selectedTeacher.prompt}\n\nStudent Message: ${userText}` }]
-            }]
+            contents: [
+              {
+                parts: [
+                  {
+                    text: `${selectedTeacher.prompt}\n\nStudent Message: ${userText}`
+                  }
+                ]
+              }
+            ]
           })
         }
       );
 
+      if (!response.ok) {
+        throw new Error(`HTTP status: ${response.status}`);
+      }
+
       const data = await response.json();
-      const replyText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Connection loop anomaly. Please verify network routing pathways.";
+      const replyText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      
+      if (!replyText) {
+        throw new Error("Empty text response data block.");
+      }
+
       setMessages(prev => [...prev, { sender: 'teacher', text: replyText }]);
     } catch (error) {
-      setMessages(prev => [...prev, { sender: 'system', text: `Network node exception bypass active.` }]);
+      console.error("Direct connection loop exception caught:", error);
+      setMessages(prev => [...prev, { sender: 'system', text: `Network node connection exception. Check API key status.` }]);
     } finally {
       setIsLoading(false);
     }
